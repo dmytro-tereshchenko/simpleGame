@@ -33,10 +33,11 @@ public class FolowPlayer : MonoBehaviour
         else if (otherObj.gameObject.tag == "Player")
         {
             Debug.Log("Game over");
-            viewText.text = "Game over";
-            EditorApplication.isPlaying = false;
+            /*viewText.text = "Game over";
+            EditorApplication.isPlaying = false;*/
             //EditorApplication.isPaused = true;
             //Destroy(otherObj.gameObject);
+            Application.Quit();
         }
     }
 
@@ -50,10 +51,11 @@ public class FolowPlayer : MonoBehaviour
         else if (otherObj.gameObject.tag == "Player")
         {
             Debug.Log("Game over");
-            viewText.text = "Game over";
-            EditorApplication.isPlaying = false;
+            /*viewText.text = "Game over";
+            EditorApplication.isPlaying = false;*/
             //EditorApplication.isPaused = true;
             //Destroy(otherObj.gameObject);
+            Application.Quit();
         }
     }
 

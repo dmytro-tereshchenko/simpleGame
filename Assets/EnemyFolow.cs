@@ -41,7 +41,8 @@ public class EnemyFolow : MonoBehaviour
         hp = maxHp;
         anim.SetBool("isRunning", true);
         startPosition = gameObject.transform.position;
-        UnityEngine.Object point = AssetDatabase.LoadAssetAtPath("Assets/point.prefab", typeof(GameObject));
+        /*UnityEngine.Object point = AssetDatabase.LoadAssetAtPath("Assets/point.prefab", typeof(GameObject));*/
+        GameObject point = Resources.Load<GameObject>("point") as GameObject;
         movePoint = Instantiate(point) as GameObject;
         movePoint.transform.position = GenerateNewMovePosition();
         transform.LookAt(movePoint.transform);
@@ -77,7 +78,8 @@ public class EnemyFolow : MonoBehaviour
         if (targ.GetComponent<SC_TPSController>().hp <= 0)
         {
             Debug.Log("Game over");
-            EditorApplication.isPlaying = false;
+            /*EditorApplication.isPlaying = false;*/
+            Application.Quit();
         }
     }
 

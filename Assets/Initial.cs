@@ -12,9 +12,12 @@ public class Initial : MonoBehaviour
     private int countEnemies = 30;
     private int countHpPotions = 10;
     private int countMaxHpPotions = 3;
-    private UnityEngine.Object enemyPrefab;
+    /*private UnityEngine.Object enemyPrefab;
     private UnityEngine.Object hpPotionPrefab;
-    private UnityEngine.Object maxHpPotionPrefab;
+    private UnityEngine.Object maxHpPotionPrefab;*/
+    private GameObject enemyPrefab;
+    private GameObject hpPotionPrefab;
+    private GameObject maxHpPotionPrefab;
     private GameObject player;
     private float enemySpawnTime = 30;
     private float potionSpawnTime = 60;
@@ -27,9 +30,12 @@ public class Initial : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyPrefab = AssetDatabase.LoadAssetAtPath("Assets/Sceleton.prefab", typeof(GameObject));
-        hpPotionPrefab = AssetDatabase.LoadAssetAtPath("Assets/RPG Pack/Prefabs/Bottle_Health.prefab", typeof(GameObject));
-        maxHpPotionPrefab = AssetDatabase.LoadAssetAtPath("Assets/RPG Pack/Prefabs/Bottle_Endurance.prefab", typeof(GameObject));
+        /*enemyPrefab = (UnityEngine.Object)AssetDatabase.LoadAssetAtPath("Assets/Sceleton.prefab", typeof(GameObject));
+        hpPotionPrefab = (UnityEngine.Object)AssetDatabase.LoadAssetAtPath("Assets/RPG Pack/Prefabs/Bottle_Health.prefab", typeof(GameObject));
+        maxHpPotionPrefab = (UnityEngine.Object)AssetDatabase.LoadAssetAtPath("Assets/RPG Pack/Prefabs/Bottle_Endurance.prefab", typeof(GameObject));*/
+        enemyPrefab = Resources.Load<GameObject>("Sceleton") as GameObject;
+        hpPotionPrefab = Resources.Load<GameObject>("Bottle_Health") as GameObject;
+        maxHpPotionPrefab = Resources.Load<GameObject>("Bottle_Endurance") as GameObject;
         player = GameObject.Find("Knight");
         enemies = new List<GameObject>();
         hpPotions = new List<GameObject>();
