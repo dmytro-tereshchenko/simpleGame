@@ -182,14 +182,16 @@ public class SC_TPSController : MonoBehaviour
         {
             xp -= maxXp;
             lvl++;
+            damage++;
+            maxHp += 10;
             maxXp = (int)((float)maxXp * 1.5);
-            GameObject lvlText = GameObject.Find("LvlText");
-            lvlText.GetComponent<Text>().text = lvl.ToString();
+            /*GameObject lvlText = GameObject.Find("LvlText");
+            lvlText.GetComponent<Text>().text = lvl.ToString();*/
             hp = maxHp;
             OnDrawHpBar();
         }
         GameObject xpText = GameObject.Find("XpText");
-        xpText.GetComponent<Text>().text = xp + " / " + maxXp;
+        xpText.GetComponent<Text>().text = "(" + lvl + ") " + xp + " / " + maxXp;
         Image xpBarImage = GameObject.Find("XpBarInner").GetComponent<Image>();
         Debug.Log(xpBarImage);
         xpBarImage.fillAmount = Mathf.Clamp((float)xp / (float)maxXp, 0, 1f);

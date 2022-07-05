@@ -26,6 +26,7 @@ public class Initial : MonoBehaviour
     private List<GameObject> enemies;
     private List<GameObject> hpPotions;
     private List<GameObject> maxHpPotions;
+    private int countTimeEnemies = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -89,9 +90,9 @@ public class Initial : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab) as GameObject;
         enemy.transform.position = new Vector3(rand.Next(-80, 80), 0, rand.Next(-80, 80));
         enemy.GetComponent<EnemyFolow>().target = player.transform;
-        enemy.GetComponent<EnemyFolow>().speed = 5;
-        enemy.GetComponent<EnemyFolow>().maxHp = 50;
-        enemy.GetComponent<EnemyFolow>().xp = 30;
+        enemy.GetComponent<EnemyFolow>().speed = 5 + (float)countTimeEnemies / 50;
+        enemy.GetComponent<EnemyFolow>().maxHp = 50 + countTimeEnemies / 5 * 10;
+        enemy.GetComponent<EnemyFolow>().xp = (int)enemy.GetComponent<EnemyFolow>().maxHp * 3 / 5;
         enemies.Add(enemy);
     }
 
@@ -132,7 +133,11 @@ public class Initial : MonoBehaviour
     private IEnumerator RunTimerGenerateEnemy()
     {
         while (Time.time < enemySpawn) yield return null;
-        if(enemies.Count< countEnemies)
+        if(++countTimeEnemies % 5 == 0)
+        {
+            countEnemies++;
+        }
+        if (enemies.Count< countEnemies)
         {
             GenerateEnemy();
         }

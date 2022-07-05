@@ -79,7 +79,12 @@ public class EnemyFolow : MonoBehaviour
         {
             Debug.Log("Game over");
             /*EditorApplication.isPlaying = false;*/
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
             Application.Quit();
+#endif
+            //Application.Quit();
         }
     }
 

@@ -37,7 +37,12 @@ public class FolowPlayer : MonoBehaviour
             EditorApplication.isPlaying = false;*/
             //EditorApplication.isPaused = true;
             //Destroy(otherObj.gameObject);
+#if DEVELOPMENT_BUILD || UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
             Application.Quit();
+#endif
+        //Application.Quit();
         }
     }
 
